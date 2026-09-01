@@ -1,7 +1,15 @@
+/* =========================================
+   GLOBAL RESET
+========================================= */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
@@ -9,19 +17,123 @@ body {
     background: #06111f;
     color: #ffffff;
     min-height: 100vh;
+    overflow-x: hidden;
+
+    /* Page entrance animation */
+    animation: pageFade 0.7s ease-out;
 }
 
-/* Header */
+
+/* =========================================
+   ANIMATIONS
+========================================= */
+
+@keyframes pageFade {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes shieldFloat {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+@keyframes glow {
+    0%,
+    100% {
+        box-shadow:
+            0 0 15px rgba(0, 229, 255, 0.2);
+    }
+
+    50% {
+        box-shadow:
+            0 0 35px rgba(0, 229, 255, 0.5);
+    }
+}
+
+@keyframes pulse {
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.7;
+    }
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
 header {
     background: #081827;
     border-bottom: 1px solid #16344d;
+
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    animation: slideUp 0.6s ease-out;
 }
 
 nav {
     width: 90%;
     max-width: 1200px;
+    min-height: 75px;
+
     margin: auto;
-    height: 75px;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -29,173 +141,399 @@ nav {
 
 nav h2 {
     color: #00e5ff;
+    letter-spacing: 1px;
+
+    transition: 0.3s;
+}
+
+nav h2:hover {
+    transform: scale(1.05);
+
+    text-shadow:
+        0 0 15px rgba(0, 229, 255, 0.7);
 }
 
 nav a {
+    position: relative;
+
     color: #c9d9e8;
     text-decoration: none;
+
     margin-left: 30px;
+
     transition: 0.3s;
+}
+
+
+/* Navigation underline */
+
+nav a::after {
+    content: "";
+
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+
+    width: 0;
+    height: 2px;
+
+    background: #00e5ff;
+
+    transition: width 0.3s ease;
 }
 
 nav a:hover {
     color: #00e5ff;
+
+    text-shadow:
+        0 0 10px rgba(0, 229, 255, 0.5);
 }
 
-/* HOME PAGE */
+nav a:hover::after {
+    width: 100%;
+}
+
+
+/* =========================================
+   HOME PAGE
+========================================= */
+
 .hero {
-    min-height: 600px;
     width: 90%;
     max-width: 1200px;
+
+    min-height: calc(100vh - 75px);
+
     margin: auto;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    gap: 60px;
 }
 
 .hero-content {
     max-width: 650px;
+
+    animation: slideLeft 0.9s ease-out;
 }
 
 .tag {
     color: #00e5ff;
+
     font-size: 14px;
     font-weight: bold;
+
     letter-spacing: 3px;
+
     margin-bottom: 20px;
+
+    animation: pulse 2s infinite;
 }
 
 .hero h1 {
     font-size: 55px;
+
     line-height: 1.1;
+
     margin-bottom: 25px;
 }
 
-span {
+.hero h1 span {
     color: #00e5ff;
+
+    text-shadow:
+        0 0 20px rgba(0, 229, 255, 0.5);
 }
 
 .hero p {
     color: #a8bacb;
+
     font-size: 18px;
+
     line-height: 1.7;
+
     margin-bottom: 35px;
 }
+
+
+/* =========================================
+   SHIELD
+========================================= */
 
 .shield {
     width: 260px;
     height: 260px;
+
+    flex-shrink: 0;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
     font-size: 120px;
+
     border: 2px solid #00e5ff;
+
     border-radius: 50%;
+
     box-shadow:
         0 0 30px rgba(0, 229, 255, 0.3),
         inset 0 0 30px rgba(0, 229, 255, 0.1);
+
+    animation:
+        shieldFloat 3s ease-in-out infinite,
+        glow 2.5s ease-in-out infinite;
+
+    transition: 0.4s;
 }
+
+.shield:hover {
+    transform: scale(1.08);
+
+    box-shadow:
+        0 0 60px rgba(0, 229, 255, 0.8),
+        inset 0 0 40px rgba(0, 229, 255, 0.3);
+}
+
+
+/* =========================================
+   GENERAL BUTTONS
+========================================= */
 
 .btn,
 .secondary-btn {
     display: inline-block;
+
     padding: 14px 25px;
+
     border-radius: 8px;
+
     text-decoration: none;
+
     border: none;
+
     cursor: pointer;
+
     font-size: 16px;
     font-weight: bold;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.3s ease;
 }
 
 .btn {
     background: #00e5ff;
     color: #03111c;
+
+    box-shadow:
+        0 0 15px rgba(0, 229, 255, 0.25);
 }
 
 .btn:hover {
     background: #66f1ff;
+
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 8px 25px rgba(0, 229, 255, 0.45);
 }
 
 .secondary-btn {
     color: #00e5ff;
+
     border: 1px solid #00e5ff;
+
     margin-left: 10px;
 }
 
-/* CHECKER PAGE */
+.secondary-btn:hover {
+    background: rgba(0, 229, 255, 0.1);
+
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 8px 25px rgba(0, 229, 255, 0.2);
+}
+
+
+/* =========================================
+   CHECKER PAGE
+========================================= */
+
 .container {
     min-height: calc(100vh - 140px);
+
     display: flex;
     justify-content: center;
     align-items: center;
+
     padding: 40px 20px;
 }
 
 .checker-box {
     background: #0a1d2d;
+
     width: 100%;
-    max-width: 650px;
+    max-width: 680px;
+
     padding: 45px;
+
     border-radius: 15px;
+
     border: 1px solid #16425a;
+
     text-align: center;
+
+    animation:
+        slideUp 0.8s ease-out,
+        glow 3s ease-in-out infinite;
+
+    transition: 0.4s;
+}
+
+.checker-box:hover {
+    border-color: #00e5ff;
+
+    transform: translateY(-3px);
 }
 
 .checker-box h1 {
     font-size: 45px;
+
     color: white;
+
     margin-bottom: 15px;
 }
 
 .description {
     color: #9db0bf;
+
     margin-bottom: 30px;
+
     line-height: 1.6;
 }
 
+
+/* =========================================
+   INPUT AREA
+========================================= */
+
+/*
+   IMPORTANT:
+   Input and button are now vertically aligned.
+   Gap is only 5px.
+*/
+
 .input-area {
     display: flex;
-    gap: 10px;
+
+    flex-direction: column;
+
+    align-items: center;
+
     justify-content: center;
+
+    gap: 5px;
 }
 
+
+/* =========================================
+   PASSWORD INPUT
+========================================= */
+
 input {
-    width: 65%;
-    padding: 13px 15px;
-    background: #06111f;
-    color: white;
-    border: 1px solid #28506a;
-    border-radius: 7px;
-    font-size: 15px;
+    width: 65%; 
+    padding: 13px 15px; 
+    background: #06111f; 
+    color: white; 
+    border: 1px solid #28506a; 
+    border-radius: 7px; 
+    font-size: 15px; 
     outline: none;
+    margin-bottom: 15px;
+
+    transition:
+        border 0.3s ease,
+        box-shadow 0.3s ease,
+        transform 0.3s ease;
 }
 
 input:focus {
     border-color: #00e5ff;
+
+    box-shadow:
+        0 0 10px rgba(0, 229, 255, 0.3),
+        0 0 25px rgba(0, 229, 255, 0.1);
+
+    transform: scale(1.02);
 }
+
+input::placeholder {
+    color: #6f8799;
+}
+
+
+/* =========================================
+   CHECK BUTTON
+========================================= */
 
 button {
     padding: 13px 20px;
+
     border: none;
+
     border-radius: 7px;
+
     background: #0284c7;
+
     color: white;
+
     font-size: 15px;
+
     font-weight: bold;
+
     cursor: pointer;
+
+    transition:
+        background 0.3s ease,
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
 }
 
 button:hover {
     background: #0369a1;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 20px rgba(2, 132, 199, 0.35);
 }
+
+button:active {
+    transform: scale(0.96);
+}
+
+
+/* =========================================
+   RESULT
+========================================= */
 
 #result {
     margin-top: 20px;
+
     padding: 15px;
+
     border-radius: 8px;
+
     font-weight: bold;
+
     display: none;
+
+    animation: slideUp 0.5s ease-out;
 }
 
 .weak {
@@ -213,105 +551,392 @@ button:hover {
     color: #15803d;
 }
 
-/* RESULT PAGE */
+
+/* =========================================
+   RESULT PAGE
+========================================= */
+
 .results-container {
     width: 90%;
     max-width: 800px;
+
     text-align: center;
+
     margin: auto;
+
     padding-top: 100px;
+
+    animation: slideUp 0.8s ease-out;
 }
 
 .results-container h1 {
     font-size: 40px;
+
     color: #00ff9d;
+
     margin-bottom: 15px;
+
+    text-shadow:
+        0 0 15px rgba(0, 255, 157, 0.4);
 }
 
 .results-subtitle {
     color: #a9b7c6;
+
     font-size: 18px;
+
     margin-bottom: 30px;
 }
 
 .result-card {
     background: #0d1826;
+
     border: 1px solid #00ff9d;
+
     border-radius: 15px;
+
     padding: 30px;
+
+    animation:
+        slideUp 1s ease-out,
+        glow 3s ease-in-out infinite;
+
+    transition: 0.4s;
+}
+
+.result-card:hover {
+    transform: translateY(-6px);
+
+    box-shadow:
+        0 15px 40px rgba(0, 255, 157, 0.15);
 }
 
 .result-card h2 {
     color: #00d9ff;
+
     font-size: 28px;
+
     margin-bottom: 20px;
 }
 
 .result-card p {
     color: #d0dbe5;
+
     font-size: 17px;
+
     line-height: 1.7;
 }
 
-/* FOOTER */
+
+/* =========================================
+   FOOTER
+========================================= */
+
 footer {
     text-align: center;
+
     padding: 25px;
+
     background: #040d17;
+
     color: #62788a;
+
+    border-top: 1px solid #10283b;
 }
 
-/* MOBILE */
-@media (max-width: 768px) {
 
-    nav {
-        height: auto;
-        padding: 20px 0;
-        flex-direction: column;
-        gap: 15px;
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 900px) {
+
+    .hero {
+        gap: 30px;
+    }
+
+    .hero h1 {
+        font-size: 45px;
+    }
+
+    .shield {
+        width: 210px;
+        height: 210px;
+
+        font-size: 95px;
     }
 
     nav a {
-        margin: 0 10px;
+        margin-left: 18px;
     }
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 768px) {
+
+    /* Navigation */
+
+    nav {
+        min-height: auto;
+
+        padding: 20px 0;
+
+        flex-direction: column;
+
+        gap: 18px;
+    }
+
+    nav h2 {
+        font-size: 24px;
+    }
+
+    nav a {
+        margin: 0 7px;
+
+        font-size: 14px;
+    }
+
+
+    /* Hero */
 
     .hero {
         flex-direction: column;
+
         text-align: center;
+
         justify-content: center;
-        gap: 50px;
+
+        gap: 45px;
+
         padding: 70px 0;
+
+        min-height: auto;
     }
 
-    .hero h1,
-    .checker-box h1 {
+    .hero-content {
+        animation: slideUp 0.8s ease-out;
+    }
+
+    .hero h1 {
         font-size: 40px;
     }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    .tag {
+        font-size: 12px;
+    }
+
+
+    /* Shield */
 
     .shield {
         width: 180px;
         height: 180px;
+
         font-size: 80px;
     }
 
+
+    /* Home Buttons */
+
+    .btn,
+    .secondary-btn {
+        padding: 12px 18px;
+
+        font-size: 14px;
+    }
+
+
+    /* Checker */
+
+    .container {
+        min-height: auto;
+
+        padding: 50px 15px;
+    }
+
+    .checker-box {
+        padding: 30px 20px;
+    }
+
+    .checker-box h1 {
+        font-size: 34px;
+    }
+
+    .description {
+        font-size: 15px;
+    }
+
+
+    /* Input */
+
     .input-area {
         flex-direction: column;
+
+        gap: 5px;
     }
 
     input {
         width: 100%;
     }
 
+
+    /* Check button */
+
     button {
-        width: 100%;
+        width: auto;
+
+        min-width: 160px;
     }
 
-    .checker-box,
-    .result-card {
-        padding: 30px 20px;
+
+    /* Results */
+
+    .results-container {
+        width: 92%;
+
+        padding-top: 60px;
+
+        padding-bottom: 50px;
     }
 
     .results-container h1 {
         font-size: 30px;
+    }
+
+    .results-subtitle {
+        font-size: 16px;
+    }
+
+    .result-card {
+        padding: 25px 18px;
+    }
+
+    .result-card h2 {
+        font-size: 24px;
+    }
+
+    .result-card p {
+        font-size: 15px;
+    }
+}
+
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 480px) {
+
+    nav h2 {
+        font-size: 21px;
+    }
+
+    nav a {
+        font-size: 13px;
+
+        margin: 0 4px;
+    }
+
+
+    /* Hero */
+
+    .hero {
+        padding: 50px 0;
+
+        gap: 40px;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    .hero p {
+        font-size: 15px;
+
+        line-height: 1.6;
+    }
+
+
+    /* Home buttons */
+
+    .btn,
+    .secondary-btn {
+        display: block;
+
+        width: 100%;
+
+        margin: 10px 0;
+    }
+
+
+    /* Shield */
+
+    .shield {
+        width: 150px;
+        height: 150px;
+
+        font-size: 65px;
+    }
+
+
+    /* Checker */
+
+    .checker-box {
+        padding: 25px 15px;
+    }
+
+    .checker-box h1 {
+        font-size: 29px;
+    }
+
+
+    /* Input */
+
+    input {
+        width: 100%;
+    }
+
+
+    /* Button */
+
+    button {
+        width: auto;
+
+        min-width: 150px;
+    }
+
+
+    /* Result */
+
+    .results-container h1 {
+        font-size: 27px;
+    }
+}
+
+
+/* =========================================
+   ACCESSIBILITY
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+
+        animation-iteration-count: 1 !important;
+
+        transition-duration: 0.01ms !important;
+
+        scroll-behavior: auto !important;
     }
 }
