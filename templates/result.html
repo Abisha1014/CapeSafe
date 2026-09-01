@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Security Result | CyberSafe</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<header>
+
+    <nav>
+
+        <h2>🛡 CyberSafe</h2>
+
+        <div>
+
+            <a href="{{ url_for('home') }}">
+                Home
+            </a>
+
+            <a href="{{ url_for('checker') }}">
+                Security Checker
+            </a>
+
+        </div>
+
+    </nav>
+
+</header>
+
+
+<main class="container">
+
+    <div class="checker-box">
+
+        {% if is_valid %}
+
+            <h1>🟢 Valid Password</h1>
+
+            <p class="description">
+                Your password is secure.
+            </p>
+
+        {% else %}
+
+            <h1>🔴 Invalid Password</h1>
+
+            <p class="description">
+                Your password does not meet the security requirements.
+            </p>
+
+        {% endif %}
+
+
+        <a href="{{ url_for('checker') }}" class="btn">
+            Check Another Password
+        </a>
+
+    </div>
+
+</main>
+
+
+<footer>
+    © 2026 CyberSafe | Cyber Security Awareness
+</footer>
+
+</body>
+
+</html>

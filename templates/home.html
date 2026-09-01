@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Safe | Cyber Safe;right</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<header>
+    <nav>
+        <h2>🛡 Cyber Safe</h2>
+        <div>
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="{{ url_for('checker') }}">Security Checker</a>
+        </div>
+    </nav>
+</header>
+
+<section class="hero">
+    <div class="hero-content">
+        <h1>Stay Safe in the <span>Digital World</span></h1>
+        <p>
+            Protect your digital identity and learn how secure your
+            passwords, websites and online information really are.
+        </p>
+
+        <a href="{{ url_for('checker') }}" class="btn">Start Security Check →
+        </a>
+    </div>
+
+    <div class="shield">
+        🛡️
+    </div>
+</section>
+
+</section>
+
+
+
+</body>
+</html>
