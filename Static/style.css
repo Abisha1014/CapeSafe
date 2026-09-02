@@ -1,6 +1,4 @@
-/* =========================================
-   GLOBAL RESET
-========================================= */
+
 
 * {
     margin: 0;
@@ -24,9 +22,6 @@ body {
 }
 
 
-/* =========================================
-   ANIMATIONS
-========================================= */
 
 @keyframes pageFade {
     from {
@@ -112,9 +107,7 @@ body {
 }
 
 
-/* =========================================
-   HEADER
-========================================= */
+
 
 header {
     background: #081827;
@@ -194,9 +187,7 @@ nav a:hover::after {
 }
 
 
-/* =========================================
-   HOME PAGE
-========================================= */
+
 
 .hero {
     width: 90%;
@@ -258,10 +249,6 @@ nav a:hover::after {
 }
 
 
-/* =========================================
-   SHIELD
-========================================= */
-
 .shield {
     width: 260px;
     height: 260px;
@@ -298,9 +285,7 @@ nav a:hover::after {
 }
 
 
-/* =========================================
-   GENERAL BUTTONS
-========================================= */
+
 
 .btn,
 .secondary-btn {
@@ -360,10 +345,6 @@ nav a:hover::after {
 }
 
 
-/* =========================================
-   CHECKER PAGE
-========================================= */
-
 .container {
     min-height: calc(100vh - 140px);
 
@@ -418,15 +399,7 @@ nav a:hover::after {
 }
 
 
-/* =========================================
-   INPUT AREA
-========================================= */
 
-/*
-   IMPORTANT:
-   Input and button are now vertically aligned.
-   Gap is only 5px.
-*/
 
 .input-area {
     display: flex;
@@ -441,9 +414,7 @@ nav a:hover::after {
 }
 
 
-/* =========================================
-   PASSWORD INPUT
-========================================= */
+
 
 input {
     width: 65%; 
@@ -477,9 +448,6 @@ input::placeholder {
 }
 
 
-/* =========================================
-   CHECK BUTTON
-========================================= */
 
 button {
     padding: 13px 20px;
@@ -518,9 +486,6 @@ button:active {
 }
 
 
-/* =========================================
-   RESULT
-========================================= */
 
 #result {
     margin-top: 20px;
@@ -551,10 +516,6 @@ button:active {
     color: #15803d;
 }
 
-
-/* =========================================
-   RESULT PAGE
-========================================= */
 
 .results-container {
     width: 90%;
@@ -628,9 +589,6 @@ button:active {
 }
 
 
-/* =========================================
-   FOOTER
-========================================= */
 
 footer {
     text-align: center;
@@ -645,9 +603,6 @@ footer {
 }
 
 
-/* =========================================
-   TABLET
-========================================= */
 
 @media (max-width: 900px) {
 
@@ -672,9 +627,6 @@ footer {
 }
 
 
-/* =========================================
-   MOBILE
-========================================= */
 
 @media (max-width: 768px) {
 
@@ -701,7 +653,6 @@ footer {
     }
 
 
-    /* Hero */
 
     .hero {
         flex-direction: column;
@@ -734,7 +685,7 @@ footer {
     }
 
 
-    /* Shield */
+
 
     .shield {
         width: 180px;
@@ -744,7 +695,6 @@ footer {
     }
 
 
-    /* Home Buttons */
 
     .btn,
     .secondary-btn {
@@ -754,7 +704,6 @@ footer {
     }
 
 
-    /* Checker */
 
     .container {
         min-height: auto;
@@ -775,7 +724,6 @@ footer {
     }
 
 
-    /* Input */
 
     .input-area {
         flex-direction: column;
@@ -788,7 +736,6 @@ footer {
     }
 
 
-    /* Check button */
 
     button {
         width: auto;
@@ -797,7 +744,6 @@ footer {
     }
 
 
-    /* Results */
 
     .results-container {
         width: 92%;
@@ -829,10 +775,6 @@ footer {
 }
 
 
-/* =========================================
-   SMALL MOBILE
-========================================= */
-
 @media (max-width: 480px) {
 
     nav h2 {
@@ -846,7 +788,6 @@ footer {
     }
 
 
-    /* Hero */
 
     .hero {
         padding: 50px 0;
@@ -865,7 +806,6 @@ footer {
     }
 
 
-    /* Home buttons */
 
     .btn,
     .secondary-btn {
@@ -877,7 +817,6 @@ footer {
     }
 
 
-    /* Shield */
 
     .shield {
         width: 150px;
@@ -887,7 +826,6 @@ footer {
     }
 
 
-    /* Checker */
 
     .checker-box {
         padding: 25px 15px;
@@ -898,14 +836,12 @@ footer {
     }
 
 
-    /* Input */
 
     input {
         width: 100%;
     }
 
 
-    /* Button */
 
     button {
         width: auto;
@@ -914,17 +850,12 @@ footer {
     }
 
 
-    /* Result */
 
     .results-container h1 {
         font-size: 27px;
     }
 }
 
-
-/* =========================================
-   ACCESSIBILITY
-========================================= */
 
 @media (prefers-reduced-motion: reduce) {
 
